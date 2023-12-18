@@ -1,0 +1,19 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title={t("site.title")} description={t("site.description")} lang={lang}>
+  <h1>{t("home.welcome")}</h1>
+  <p>
+    {t("home.p1")}
+  </p>
+  <p>
+    {t("home.p2")}
+  </p>
+  
+</Layout>
