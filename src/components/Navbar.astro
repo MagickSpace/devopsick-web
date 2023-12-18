@@ -2,21 +2,19 @@
 // Translation Imports
 
 // Assets Imports - Info
-import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
-import LangLink from "./LangLink.astro";
+import HeaderLink from './HeaderLink.astro'
+import { SITE_TITLE } from '../consts'
+import LangLink from './LangLink.astro'
 import { ThemeToggle } from '@/components/theme-toggle'
 import LogoLoading from '@/components/typography/LogoLoading.astro'
 import { Image } from 'astro:assets'
 import LogoTrancparent from '@/assets/LogoTrancparent.png'
 
-const { lang } = Astro.props;
+const { lang } = Astro.props
 
-const homeSlug = `/${lang || ""}`;
-const blogSlug = `/${lang || ""}/blog`;
-const aboutSlug = `/${lang || ""}/about`;
-
-
+const homeSlug = `/${lang || ''}`
+const blogSlug = `/${lang || ''}/blog`
+const aboutSlug = `/${lang || ''}/about`
 ---
 
 <header class="sticky top-0 z-40 w-full border-b bg-background">
@@ -51,7 +49,6 @@ const aboutSlug = `/${lang || ""}/about`;
         class="col-span-2 items-center justify-end gap-6 md:col-span-4 lg:col-span-6"
       >
         <div class="flex items-center justify-end gap-4">
-          
           <a
             href="javascript:void(0)"
             class="transition-colors duration-300 hover:text-emerald-500"
@@ -136,17 +133,17 @@ const aboutSlug = `/${lang || ""}/about`;
     <div class="flex flex-1 items-center justify-end space-x-4">
       <!-- Navlinks Lists -->
       <nav class="flex items-center space-x-3">
-          <h2><a href="/">{SITE_TITLE}</a></h2>
-          <div class="internal-links">
-            <HeaderLink href={homeSlug}>Home</HeaderLink>
-            <HeaderLink href={blogSlug}>Blog</HeaderLink>
-            <HeaderLink href={aboutSlug}>About</HeaderLink>
-          </div>
-          <div class="internal-links">
-            <LangLink language="en" isActive={lang == "en"} />
-            <LangLink language="ru" isActive={lang == "ru"} />
-            <LangLink language="uk" isActive={lang == "uk"} />
-          </div>
+        <h2><a href="/">{SITE_TITLE}</a></h2>
+        <div class="internal-links">
+          <HeaderLink href={homeSlug}>Home</HeaderLink>
+          <HeaderLink href={blogSlug}>Blog</HeaderLink>
+          <HeaderLink href={aboutSlug}>About</HeaderLink>
+        </div>
+        <div class="internal-links">
+          <LangLink language="en" isActive={lang == 'en'} />
+          <LangLink language="ru" isActive={lang == 'ru'} />
+          <LangLink language="uk" isActive={lang == 'uk'} />
+        </div>
         <div><ThemeToggle client:load /></div>
       </nav>
     </div>

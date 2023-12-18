@@ -1,10 +1,10 @@
 ---
-import SmallText from "@/components/typography/SmallText.astro";
+import SmallText from '@/components/typography/SmallText.astro'
 import { Image } from 'astro:assets'
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
-import favicon from "@/assets/favicon.svg";
-import FooterLinks from "@/components/typography/FooterLinks.astro";
-import LogoLoading from "@/components/typography/LogoLoading.astro";
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import favicon from '@/assets/favicon.svg'
+import FooterLinks from '@/components/typography/FooterLinks.astro'
+import LogoLoading from '@/components/typography/LogoLoading.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -39,7 +39,6 @@ const t = useTranslations(lang)
           </a>
           <SmallText>
             {t('home-footer-meta')}
-            
           </SmallText>
         </div>
         <nav

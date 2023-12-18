@@ -1,21 +1,21 @@
 ---
-import { siteConfig } from "@/config/site";
-import "@/styles/globals.css";
-import { ViewTransitions } from "astro:transitions";
+import { siteConfig } from '@/config/site'
+import '@/styles/globals.css'
+import { ViewTransitions } from 'astro:transitions'
 
 interface Props {
-  title: string;
-  description?: string;
-  image?: string;
+  title: string
+  description?: string
+  image?: string
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 
 const {
   title,
   description = siteConfig.description,
-  image = "/og.jpg",
-} = Astro.props;
+  image = '/og.jpg',
+} = Astro.props
 ---
 
 <!-- Global Metadata -->
@@ -57,30 +57,30 @@ const {
 
 <!-- Dark mode with prevent flickering flash between navigations -->
 <script is:inline>
-const setDarkMode = () => {
-  const theme = (() => {
-    if (
-      typeof localStorage !== "undefined" &&
-      localStorage.getItem("theme")
-    ) {
-      return localStorage.getItem("theme");
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
+  const setDarkMode = () => {
+    const theme = (() => {
+      if (
+        typeof localStorage !== 'undefined' &&
+        localStorage.getItem('theme')
+      ) {
+        return localStorage.getItem('theme')
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark'
+      }
+      return 'light'
+    })()
 
-  if (theme === "light") {
-    document.documentElement.classList.remove("dark");
-  } else {
-    document.documentElement.classList.add("dark");
+    if (theme === 'light') {
+      document.documentElement.classList.remove('dark')
+    } else {
+      document.documentElement.classList.add('dark')
+    }
+    window.localStorage.setItem('theme', theme)
   }
-  window.localStorage.setItem("theme", theme);
-};
 
-setDarkMode();
-document.addEventListener("astro:after-swap", setDarkMode);
+  setDarkMode()
+  document.addEventListener('astro:after-swap', setDarkMode)
 </script>
 
 <ViewTransitions />

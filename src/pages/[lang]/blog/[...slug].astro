@@ -1,29 +1,30 @@
 ---
-import { getBlogPosts } from "../../../content/config";
-import BlogPost from "../../../layouts/BlogPost.astro";
+import { getBlogPosts } from '../../../content/config'
+import BlogPost from '../../../layouts/BlogPost.astro'
 
 export async function getStaticPaths() {
-	const pages = await getBlogPosts();
+  const pages = await getBlogPosts()
 
-	const paths = pages.map((page) => {
-		return {
-			params: { lang: page?.data.lang || "uk", slug: page.blog_slug },
-			props: page,
-		};
-	});
+  const paths = pages.map((page) => {
+    return {
+      params: { lang: page?.data.lang || 'uk', slug: page.blog_slug },
+      props: page,
+    }
+  })
 
-	return paths;
+  return paths
 }
 
-const { lang, slug } = Astro.params;
-const page = Astro.props;
-const formattedDate = page.data?.date?.toLocaleString(lang);
+const { lang, slug } = Astro.params
+const page = Astro.props
+const formattedDate = page.data?.date?.toLocaleString(lang)
 
-const { Content } = await page.render();
+const { Content } = await page.render()
+export const prerender = true
 ---
 
 <BlogPost {...page.data} lang={lang}>
-	<h1>{page.data.title}</h1>
-	<p>by {page.data.author} • {formattedDate}</p>
-	<Content />
+  <h1>{page.data.title}</h1>
+  <p>by {page.data.author} • {formattedDate}</p>
+  <Content />
 </BlogPost>

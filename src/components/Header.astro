@@ -1,13 +1,13 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../consts";
-import LangLink from "./LangLink.astro";
+import HeaderLink from './HeaderLink.astro'
+import { SITE_TITLE } from '../consts'
+import LangLink from './LangLink.astro'
 
-const { lang } = Astro.props;
+const { lang } = Astro.props
 
-const homeSlug = `/${lang || ""}`;
-const blogSlug = `/${lang || ""}/blog`;
-const aboutSlug = `/${lang || ""}/about`;
+const homeSlug = `/${lang || ''}`
+const blogSlug = `/${lang || ''}/blog`
+const aboutSlug = `/${lang || ''}/about`
 ---
 
 <header>
@@ -19,9 +19,9 @@ const aboutSlug = `/${lang || ""}/about`;
       <HeaderLink href={aboutSlug}>About</HeaderLink>
     </div>
     <div class="internal-links">
-      <LangLink language="en" isActive={lang == "en"} />
-      <LangLink language="ru" isActive={lang == "ru"} />
-      <LangLink language="uk" isActive={lang == "uk"} />
+      <LangLink language="en" isActive={lang == 'en'} />
+      <LangLink language="ru" isActive={lang == 'ru'} />
+      <LangLink language="uk" isActive={lang == 'uk'} />
     </div>
     <div class="social-links">
       <a href="https://m.webtoo.ls/@astro" target="_blank">

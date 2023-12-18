@@ -1,17 +1,16 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import BaseHead from "@/components/BaseHead.astro";
-import Navbar from "@/components/Navbar.astro";
-import Footer from "@/components/layouts/Footer.astro";
-import { useTranslations, type UiType } from "@/i18n/utils";
-import Container from "@/components/elements/Container.astro";
+import type { CollectionEntry } from 'astro:content'
+import BaseHead from '@/components/BaseHead.astro'
+import Navbar from '@/components/Navbar.astro'
+import Footer from '@/components/layouts/Footer.astro'
+import { useTranslations, type UiType } from '@/i18n/utils'
+import Container from '@/components/elements/Container.astro'
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<'blog'>['data']
 
-const { title, description, lang } =
-  Astro.props;
+const { title, description, lang } = Astro.props
 
-const t = useTranslations(lang as UiType);
+const t = useTranslations(lang as UiType)
 ---
 
 <!doctype html>
@@ -19,22 +18,22 @@ const t = useTranslations(lang as UiType);
   <head>
     <BaseHead lang={lang} title={title} description={description} />
   </head>
-<body class="min-h-screen bg-background text-foreground">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript
-    ><iframe
-      src="https://www.googletagmanager.com/ns.html?id=GTM-T7CDGRPZ"
-      height="0"
-      width="0"
-      style="display:none;visibility:hidden"></iframe></noscript
-  >
-  <!-- End Google Tag Manager (noscript) -->
-    <Navbar title={t("site.title")} lang={lang} />
+  <body class="min-h-screen bg-background text-foreground">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-T7CDGRPZ"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
+    <Navbar title={t('site.title')} lang={lang} />
     <main>
       <Container>
-		<slot />
+        <slot />
       </Container>
-	</main>
+    </main>
     <Footer />
   </body>
 </html>

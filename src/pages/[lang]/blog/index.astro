@@ -1,23 +1,25 @@
 ---
-import { getBlogPosts } from "../../../content/config";
-import FormattedDate from "../../../components/FormattedDate.astro";
-import Layout from "../../../layouts/Layout.astro";
+import { getBlogPosts } from '../../../content/config'
+import FormattedDate from '../../../components/FormattedDate.astro'
+import Layout from '../../../layouts/Layout.astro'
 
-const { lang } = Astro.params;
+const { lang } = Astro.params
 
 const posts = (await getBlogPosts())
   ?.filter((blog) => {
-    return blog?.data?.lang === lang;
+    return blog?.data?.lang === lang
   })
-  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+  .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
 
 export async function getStaticPaths() {
-  return ["uk", "ru", "en"].map((lang) => {
-    return { params: { lang } };
-  });
+  return ['uk', 'ru', 'en'].map((lang) => {
+    return { params: { lang } }
+  })
 }
 
-const page = Astro.props;
+const page = Astro.props
+
+export const prerender = true
 ---
 
 <Layout title="Blog" description="Blog" lang={lang}>

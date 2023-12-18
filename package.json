@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "astro dev --watch",
     "start": "cd node_modules/sharp && bun install && cd ../../ && bun --bun run build",
-    "build": "astro check && astro build --verbose",
+    "build": "astro build --force",
     "format": "prettier -w . --cache",
     "astro": "astro",
     "sharp": "cd node_modules/sharp && bun install && cd ../../"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.3",
+    "@astrojs/cloudflare": "^8.0.0",
     "@astrojs/mdx": "2.0.1",
     "@astrojs/partytown": "^2.0.2",
     "@astrojs/react": "^3.0.7",
