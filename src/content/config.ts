@@ -30,3 +30,15 @@ export async function getBlogPosts() {
     }
   })
 }
+
+export async function getCategoryPosts() {
+  const posts = await getCollection('blog')
+
+  return posts.map((post) => {
+    const blog_category= post.data.category.split('/')[0]
+    return {
+      ...post,
+      blog_category,
+    }
+  })
+}
