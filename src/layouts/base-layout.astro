@@ -1,0 +1,28 @@
+---
+import BaseHead from '@/components/layout/base-head.astro'
+import TailwindIndicator from '@/components/tailwind-indicator.astro'
+import { cn } from '@/lib/utils'
+import { useTranslations, type UiType } from '@/i18n/utils'
+
+type Props = {
+  title: string
+  description?: string
+  bodyClass?: string
+  lang: string
+}
+
+const { title, description, bodyClass, lang } = Astro.props
+
+const t = useTranslations(lang as UiType)
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <BaseHead title={title} description={description} lang={lang} />
+  </head>
+  <body class={cn('flex flex-col min-h-screen', bodyClass)}>
+    <slot />
+    <TailwindIndicator />
+  </body>
+</html>

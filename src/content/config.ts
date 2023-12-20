@@ -17,7 +17,27 @@ const blog = defineCollection({
   }),
 })
 
-export const collections = { blog }
+const docs = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    lang: z.string().optional(),
+  }),
+})
+
+const guides = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    published: z.boolean().default(true),
+    featured: z.boolean().default(false),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    lang: z.string().optional(),
+  }),
+})
+
+export const collections = { blog, docs, guides }
 
 export async function getBlogPosts() {
   const posts = await getCollection('blog')
@@ -35,7 +55,7 @@ export async function getCategoryPosts() {
   const posts = await getCollection('blog')
 
   return posts.map((post) => {
-    const blog_category= post.data.category.split('/')[0]
+    const blog_category = post.data.category.split('/')[0]
     return {
       ...post,
       blog_category,

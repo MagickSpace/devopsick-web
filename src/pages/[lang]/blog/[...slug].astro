@@ -20,6 +20,13 @@ const page = Astro.props
 const formattedDate = page.data?.date?.toLocaleString(lang)
 
 const { Content } = await page.render()
+
+if (!slug || !page) {
+  return new Response(null, {
+    status: 404,
+    statusText: 'Not found',
+  })
+}
 export const prerender = true
 ---
 

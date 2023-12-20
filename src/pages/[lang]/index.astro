@@ -2,6 +2,8 @@
 import Layout from '@/layouts/Layout.astro'
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+import Testimonials from '../../components/Testimonials.astro'
+import Faq from '../../components/Faq.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -20,6 +22,8 @@ export const prerender = true
   <p>
     {t('home.p1')}
   </p>
+  <Faq />
+  <Testimonials />
   <p>
     {t('home.p2')}
   </p>
